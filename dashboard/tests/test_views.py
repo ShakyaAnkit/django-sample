@@ -58,28 +58,6 @@ class TestLoginView(TestCase):
         self.assertEqual(response.status_code, 302)
         directorate_login_url = reverse('dashboard:login')+'?next='+quote_plus(reverse('dashboard:designations-list'))
         self.assertRedirects(response, directorate_login_url)
-
-# AuditTrail View Test
-class TestAuditTrailViews(TestCase):
-
-    def setUp(self):
-        self.user = User.objects.create_user('ramesh','ramesh@gmail.com', 'ramesh')
-        client = Client()
-        self.list_url = reverse('dashboard:audittrail-list')
-
-    def test_audittrail_list_with_normal_login(self):
-        self.client.login(username='ramesh', password='ramesh')
-        response = self.client.get(self.list_url)
-        self.assertEquals(response.status_code, 403)
-    
-    def test_audittrail_list_with_superuser_login(self):
-        self.user.is_superuser = True
-        self.user.save(update_fields=['is_superuser'])
-        self.client.login(username='ramesh', password='ramesh')
-        response = self.client.get(self.list_url)
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'dashboard/audittrails/list.html')
-        self.assertContains(response, '<span>Audit</span>')
    
 # Designation View Test
 class TestDesignationViews(TestCase):

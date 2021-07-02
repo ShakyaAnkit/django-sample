@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 from django.urls import reverse,resolve
 
-from dashboard.views import AuditTrailListView, DesignationListView, DesignationCreateView, DesignationUpdateView, DesignationDeleteView, LoginPageView, LogoutView
+from dashboard.views import DesignationListView, DesignationCreateView, DesignationUpdateView, DesignationDeleteView, LoginPageView, LogoutView
 
 
  # Login Url Test
@@ -22,13 +22,6 @@ class TestInvalidUrls(SimpleTestCase):
         #GET an invalid URL
         response = self.client.get('/unknown_view/')
         self.assertEqual(response.status_code, 404)
-
-# AuditTrail Url Test
-class TestAuditTrailUrls(SimpleTestCase):
-
-    def test_audittrail_list_url_is_resolved(self):
-        url = reverse('dashboard:audittrail-list')
-        self.assertEquals(resolve(url).func.view_class, AuditTrailListView)
 
 # Designation Url Test
 class TestDesignationUrls(SimpleTestCase):

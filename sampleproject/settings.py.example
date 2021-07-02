@@ -157,4 +157,4 @@ REST_FRAMEWORK = {
 }
 
 # Chrome Driver Path
-EXECUTABLE_PATH='/Users/prixa/Downloads/chromedriver'
+SELENIUM_DRIVER_PATH='/Users/prixa/Downloads/chromedriver'
