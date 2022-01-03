@@ -5,13 +5,15 @@
 {% block subtitle %}Audit{% endblock %}
 
 {% block content %}
-<div class="container-fluid page__container">
-    <div class="card document-card">
-        <div class="row ml-2 mr-2 mb-2 mt-2">
-            <div class="col-sm-12 document-table-space" style="margin: 50px 0px;">
-                <h3 class="text-center">Audit </h3>
-                <table class="table no-margin table-hover table-bordered  " id="detTable">
-                    <thead>
+<div class="row">
+    <div class="col-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Basic Table</h2>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead class="text-center">
                         <tr>
                             <th>S.N</th>
                             <th>Who</th>
@@ -36,7 +38,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                {% include 'dashboard/base/pagination.html' %}
             </div>
         </div>
     </div>

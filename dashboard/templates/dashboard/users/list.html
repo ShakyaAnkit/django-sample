@@ -7,23 +7,21 @@
 {% block subtitle %} Users {% endblock %}
 
 {% block content %}
-
-<div class="container-fluid page__container">
-    <div class="card document-card">
-        <div class="row mb-4 mt-4 mr-2">
-            <div class="col-md-12">
-                <div style="text-align: right">
+<div class="row">
+    <div class="col-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Basic Table</h2>
+                <div style="margin-left: auto; text-align: right">
                     <a href="{% url 'dashboard:users-create' %}" class="btn btn-outline-primary">
                         <i class="fa fa-plus"></i>&nbsp; Add User
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="row ml-2 mr-2 mb-2 mt-2">
-            <div class="col-sm-12 document-table-space">
-                <table class="table  w-full no-footer" role="grid">
-                    <thead class="table-space-top-bottom">
-                        <tr role="row">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
                             <th>S.N</th>
                             <th>Name</th>
                             <th>Group</th>
@@ -63,7 +61,6 @@
                             </td>
                         </tr>
                         {% endfor %}
-                        
                     </tbody>
                 </table>
                 {% include 'dashboard/base/pagination.html' %}
