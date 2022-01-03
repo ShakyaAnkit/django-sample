@@ -30,6 +30,9 @@
         <!-- FAVICON -->
         <link href="{% static 'dashboard/admin/assets/img/favicon.png' %}" rel="shortcut icon" />
 
+        <!-- Flatpickr -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
         <!-- Custom Styling -->
         <style>
             #sidebar-menu li a:hover{
@@ -145,11 +148,34 @@
 <script src="{% static 'dashboard/admin/assets/js/map.js' %}"></script>
 <script src="{% static 'dashboard/admin/assets/js/custom.js' %}"></script>
 
+<!-- Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 <script>
     // init select2
     $('.select2').select2({
         width: '100%',
     })
+
+    // datetimepicker
+    $(".datetimepicker").flatpickr({
+        dateFormat: "Y-m-d H:i",
+        enableTime: true,
+        allowInput: true,
+    });
+    $(".datepicker").flatpickr({
+        dateFormat: "Y-m-d",
+        enableTime: false,
+        allowInput: true,
+    });
+    $(".timepicker").flatpickr({
+        dateFormat: "H:i",
+        enableTime: true,
+        noCalendar: true,
+        allowInput: true,
+    });
+
 </script>
 
   </body>
