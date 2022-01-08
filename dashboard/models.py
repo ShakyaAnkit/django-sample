@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -23,6 +24,27 @@ class DateTimeModel(models.Model):
             super().save()
         else:
             super().delete()
+
+
+class Account(User):
+    address = models.CharField(max_length=255, null=True, blank=True)
+    contact_no = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Account'
+        verbose_name_plural = 'Accounts'
+
+    def save(self, *args, **kwargs):
+        self.username = self.email
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        if self.first_name or self.last_name:
+            return '{} {}'.format(self.first_name, self.last_name)
+        return self.username
+
+    def get_full_name(self):
+        return '{} {}'.format(self.first_name, self.last_name).strip()
 
 
 class Designation(DateTimeModel):
